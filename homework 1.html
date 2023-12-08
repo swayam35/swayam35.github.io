@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Your Website</title>
+</head>
+<style>
+    /* Reset some default styles for consistency */
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* General styling for the body tag */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Styling for the header tag */
+header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Styling for the navigation */
+nav {
+    display: inline-block;
+    width: 80%;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Comment out existing styling for the li element */
+/* li {
+    original styles...
+} */
+
+/* Styling for the images in the nav */
+nav img {
+    width: 10%;
+}
+
+/* Styling for the grid class */
+.grid {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    justify-content: space-between; /* Adjust to match desired look */
+    align-items: center; /* Adjust to match desired look */
+    row-gap: 20px; /* Adjust to match desired look */
+}
+
+/* Descendent selector for images in the grid class */
+.grid img {
+    width: 100%;
+}
+
+/* Styling for the flex class */
+.flex {
+    display: flex;
+    flex-wrap: wrap; /* Adjust to match desired look */
+    justify-content: space-between; /* Adjust to match desired look */
+}
+
+</style>
+<body>
+    <header>
+        <h1>Your Website Header</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="grid">
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+            <!-- More images -->
+        </section>
+        
+        <section class="flex">
+            <!-- Flex content -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Your Website Footer</p>
+    </footer>
+</body>
+</html>
