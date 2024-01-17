@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+    <script>
+        function printError(elemId, hintmsg) {
+            document.getElementById(elemId).innerHTML = hintmsg;
+            document.getElementById(elemId).style.color = "red";
+        }
+
+        function validation() {
+            let name = document.form.fname.value.trim(); // Trim the input
+            let nameErr = false; // Assume no error initially
+
+            if (name === "") {
+                printError("nameErr", "Please enter your name");
+                nameErr = true;
+            } else {
+                let regex = /^[a-zA-Z\-]+$/;
+                if (regex.test(name) === false) {
+                    printError("nameErr", "Please enter a valid name");
+                    nameErr = true;
+                } else {
+                    printError("nameErr", ""); // Clear the error message
+                }
+            }
+
+            let email = document.form.email.value;
+            let emailErr = false;
+
+            if (email == "") {
+                printError("emailErr", "Please enter email...!");
+            } else {
+                let regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                if (regex.test(email) === false) {
+                    printError("emailErr", "Please enter a valid email address");
+                    emailErr = true;
+                } else {
+                    printError("emailErr", "");
+                }
+            }
+
+            let number = document.form.number.value;
+            let numberErr = false;
+
+            if (number == "") {
+                printError("numberErr", "Please enter phone number");
+            } else {
+                let regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+                if (regex.test(number) === false) {
+                    printError("numberErr", "Please enter a valid number");
+                    numberErr = true;
+                } else {
+                    printError("numberErr", "");
+                }
+            }
+
+            let country = document.form.country.value;
+            let countryErr = false;
+
+            if (country == "select") {
+                printError("countryErr", "Please enter your country");
+                countryErr = true;
+            } else {
+                printError("countryErr", "");
+            }
+
+            let gender = document.querySelector('input[name="gender"]:checked');
+            let genderErr = false;
+
+            if (!gender) {
+                printError("genderErr", "Please select a gender");
+                genderErr = true;
+            } else {
+                printError("genderErr", "");
+            }
+
+            
+
+            return !nameErr && !emailErr && !numberErr && !countryErr && !genderErr; // Return true if there are no errors
+        }
+    </script>
+</head>
+
+<body>
+    <form name="form" onsubmit="return validation()">
+
+        <div>
+            <label>full name:</label>
+            <input type="text" name="fname">
+            <div class="error" id="nameErr"></div>
+        </div><br>
+
+        <div>
+            <label>email:</label>
+            <input type="text" name="email">
+            <div class="error" id="emailErr"></div>
+        </div><br>
+
+        <div>
+            <label>phone number:</label>
+            <input type="text" name="number">
+            <div class="error" id="numberErr"></div>
+        </div><br>
+
+        <div>
+            <label>country</label>
+            <select name="country">
+                <option value="select">select</option>
+                <option value="india">India</option>
+                <option value="uk">UK</option>
+                <option value="usa">USA</option>
+                <option value="canada">Canada</option>
+                <option value="japan">Japan</option>
+            </select>
+            <div class="error" id="countryErr"></div><br>
+        </div>
+
+        <div>gender</div>
+        <label><input type="radio" name="gender" value="male">male </label>
+        <label><input type="radio" name="gender" value="female">female </label>
+        <div class="error" id="genderErr"></div><br>
+
+        <div>hobbies<i>optional</i></div>
+        <label><input type="checkbox" name="hobbies[]" value="sports">sports </label>
+        <label><input type="checkbox" name="hobbies[]" value="reading">reading </label>
+        <label><input type="checkbox" name="hobbies[]" value="movies">movies </label>
+        <div class="error" id="hobbiesErr"></div><br>
+
+        <input type="submit" value="submit">
+    </form>
+</body>
+
+</html>
